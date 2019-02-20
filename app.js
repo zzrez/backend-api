@@ -4,6 +4,8 @@ const port = 3000;
 //const process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors')
+app.use(cors())
 const routes = require('./routes/routes');
 
 // Use Node.js body parsing middleware
