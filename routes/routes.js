@@ -17,9 +17,10 @@ const tours = [{
 
 const router = app => {
     app.get('/', (req, res) => {
-        res.send({
-            message: 'GH backend-api, using Node.js and Express REST API. For GET, endpoint is /tours'
-        });
+        // res.send({
+        //     message: 'GH backend-api, using Node.js and Express REST API. For GET, endpoint is /tours'
+        // });
+        res.send('Welcome to the SpeedRez API! <br>For GET, endpoint is /tours');
     });
 
     // Display all tours from static JSON
