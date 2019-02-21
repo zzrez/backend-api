@@ -67,7 +67,9 @@ const router = app => {
         //data: results,
         message: `query = ${query}`,
         }
-        res.send(response)
+        //res.send(response)
+
+        res.send(tours)
         });
 
     // Display a single tour by ID
