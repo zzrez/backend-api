@@ -74,7 +74,7 @@ const router = app => {
     app.get('/tours/:id', (req, res) => {
         const id = req.params.id;
 
-        pool.query('SELECT * FROM tours WHERE id = ?', id, (error, result) => {
+        pool.query('SELECT * FROM tours WHERE tour_id = ?', id, (error, result) => {
             if (error) throw error;
 
             res.send(result);
