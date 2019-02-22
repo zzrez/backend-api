@@ -79,7 +79,12 @@ const router = app => {
         pool.query('SELECT * FROM tours WHERE tour_id = ?', id, (error, result) => {
             if (error) throw error;
 
-            res.send(result);
+            //res.send(result);
+
+            const data = result[0]; //needed to strip square brackets
+            res.send(data);
+            // const tour = [...result]
+            // res.json(tour);
         });
     });
 
