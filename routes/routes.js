@@ -49,7 +49,8 @@ const router = app => {
         } else {
           qString = ''
         }
-        query = `SELECT tour_id, title, summary, main_photo, price_from, duration_text FROM tours ${qString}`
+        //query = `SELECT tour_id, title, summary, main_photo, price_from, duration_text FROM tours ${qString}`
+        query = `SELECT tour_id FROM tours ${qString}`
         //pool.query('SELECT * FROM tours', (error, result) => {
         pool.query(query, (error, result) => {
             //if (error) throw error;
