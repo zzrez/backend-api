@@ -49,8 +49,8 @@ const router = app => {
         } else {
           qString = ''
         }
-        //query = `SELECT tour_id, title, summary, main_photo, price_from, duration_text FROM tours ${qString}`
-        query = `SELECT tour_id FROM tours ${qString}`
+        query = `SELECT tour_id, title, summary, main_photo, price_from, duration_text FROM tours ${qString}`
+        //query = `SELECT tour_id FROM tours ${qString}`
         //pool.query('SELECT * FROM tours', (error, result) => {
         pool.query(query, (error, result) => {
             //if (error) throw error;
@@ -72,6 +72,35 @@ const router = app => {
 
         res.send(tours)
         });
+    });
+
+    // Display tourids by ID for locations
+    app.get('/tourlist/:loc', (req, res) => {
+        const loc = req.params.loc;
+        tourIds = []
+        //query = `SELECT tour_id FROM tours ${qString}`
+        query = `SELECT tour_id FROM tours`
+        pool.query(query, (error, result) => {
+            if (error) {
+                const response = { data: null, message: `query = ${query}`, }
+                res.send(response)
+            }
+
+        result.forEach(function(value) {
+            idValue = Object.values(value);
+            tourIds.push(...idValue)
+        });
+
+        //const tours = [...result]
+        const response = {
+        data: tourIds,
+        //data: results,
+        message: `query = ${query}`,
+        }
+        //res.send(response)
+        res.send(tourIds)
+        });
+    });
 
     // Display a single tour by ID
     app.get('/tours/:id', (req, res) => {
@@ -119,10 +148,8 @@ const router = app => {
         });
     });
 
-});
+};
 
-
-}
 
 
 
